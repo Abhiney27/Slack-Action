@@ -1,0 +1,14 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  event:
+    description: 'event info'
+  job-status:
+    description: 'job status'
+  slack-bot-token:
+    description: 'Bot token used to send messages'
+  channel:
+    description: 'Channel where the messages are sended'
+runs:
+  using: 'node12'
+  main: 'index.js'
