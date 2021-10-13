@@ -1,6 +1,7 @@
 {
   "name": "hello-world-javascript-action",
   "version": "1.0.0",
+  "type":"module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,3 +23,4 @@
     "@actions/github": "^4.0.0"
   }
 }
+
