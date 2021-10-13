@@ -1,0 +1,35 @@
+on: [push, pull_request]
+
+jobs:
+  test_notify:
+    runs-on: ubuntu-latest
+    name: Test the action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Success
+        run: exit 0
+      - name: Action
+        uses: ./ 
+        if: always()
+        with:
+          event: ${{ toJson(github.event) }}
+          job-status: ${{ job.status }}
+          slack-bot-token: ${{ secrets.SLACK_TOKEN }}
+          channel: github-actions-test
+  test_ko:
+    runs-on: ubuntu-latest
+    name: Test the action on failure
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Success
+        run: exit 1
+      - name: Action
+        uses: ./
+        if: always()
+        with:
+            event: ${{ toJson(github.event) }}
+            job-status: ${{ job.status }}
+            slack-bot-token: ${{ secrets.SLACK_TOKEN }}
+            channel: github-actions-test
