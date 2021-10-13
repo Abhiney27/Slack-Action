@@ -16,7 +16,7 @@ jobs:
           event: ${{ toJson(github.event) }}
           job-status: ${{ job.status }}
           slack-bot-token: ${{ secrets.SLACK_TOKEN }}
-          channel: proba
+          channel: github-actions-test
   test_ko:
     runs-on: ubuntu-latest
     name: Test the action on failure
@@ -32,4 +32,4 @@ jobs:
             event: ${{ toJson(github.event) }}
             job-status: ${{ job.status }}
             slack-bot-token: ${{ secrets.SLACK_TOKEN }}
-            channel: proba
+            channel: github-actions-test
