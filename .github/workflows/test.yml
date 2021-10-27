@@ -32,4 +32,4 @@ jobs:
             event: ${{ toJson(github.event) }}
             job-status: ${{ job.status }}
             slack-bot-token: ${{ secrets.SLACK_TOKEN }}
-            channel: github-actions-test
+            channel: githubactionspublic
