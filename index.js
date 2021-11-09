@@ -66,6 +66,7 @@ try {
               },
               {
                 type: "mrkdwn",
+                text: `<https://github.com/alejandrogonzalez3/${github.context.repo.repo}| alejandrogonzalez3/${github.context.repo.repo}>`
               }
             ]
           }
