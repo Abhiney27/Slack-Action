@@ -34,7 +34,7 @@ try {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `*${status === "started" ?`Deployment\nStatus: Started\nService Name: ${serviceName}\nEnvironment Name: ${envName}` : status === "ended" ? `Deployment\nStatus: Finsihed\nService Name: ${serviceName}\nEnvironment Name: ${envName}` : "CANCELLED"}*`
+              text: `${status === "started" ?`*Deployment*\n*Status*: Started\n*Service Name*: ${serviceName}\n*Environment Name*: ${envName}` : status === "ended" ? `*Deployment*\n*Status*: Finsihed\n*Service Name*: ${serviceName}\n*Environment Name*: ${envName}` : "CANCELLED"}`
             }
           },    
           {
