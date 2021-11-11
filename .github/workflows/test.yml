@@ -9,8 +9,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Deploy Started
         run: exit 0
-      - name: switch to slack-directory
-        uses: ./
       - name: install node packages
         run: npm install
       - name: Action
@@ -29,8 +27,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Deployed ended
         run: exit 0
-      - name: switch to slack-directory
-        uses: ./
       - name: install node packages
         run: npm install
       - name: Action
