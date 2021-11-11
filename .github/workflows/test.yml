@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Success
+      - name: Deploy Started
         run: exit 0
       - name: install node packages
         run: npm install
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Success
+      - name: Deployed ended
         run: exit 1
       - name: install node packages
         run: npm install
