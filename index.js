@@ -34,7 +34,7 @@ try {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `Github Action *${workflow}*: *${status === "started" ?`Started deployment for ${serviceName} in ${envName} environment` : status === "ended" ? `Deployment successful for ${serviceName} in ${envName} environment` : "CANCELLED"}*`
+              text: `*${status === "started" ?`Deployment\nStatus: Started\nService Name: ${serviceName}\nEnvironment Name: ${envName}` : status === "ended" ? `Deployment\nStatus: Finsihed\nService Name: ${serviceName}\nEnvironment Name: ${envName}` : "CANCELLED"}*`
             }
           },    
           {
