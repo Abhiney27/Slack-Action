@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test_notify:
@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Deploy Started
+      - name: Deployment Started
         run: exit 0
       - name: select working directory
         run: cd .
@@ -19,6 +19,8 @@ jobs:
         with:
           event: ${{ toJson(github.event) }}
           job-status: ${{ job.status }}
+          service-name: Backend
+          env-name: Staging
           slack-bot-token: ${{ secrets.SLACK_TOKEN }}
           channel: githubactionspublic
   test_ko:
@@ -27,7 +29,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Deployed ended
+      - name: Deployment ended
         run: exit 0
       - name: select working directory
         run: cd .
@@ -39,5 +41,7 @@ jobs:
         with:
             event: ${{ toJson(github.event) }}
             job-status: ${{ job.status }}
+            service-name: Backend
+            env-name: Staging
             slack-bot-token: ${{ secrets.SLACK_TOKEN }}
             channel: githubactionspublic
