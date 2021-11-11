@@ -4,42 +4,45 @@ const fetch = require('node-fetch');
 
 try {
   const status = core.getInput("job-status");
+  const serviceName = core.getInput("service-name");
+  const envName = core.getInput("env-name");
   const jobName = github.context.job;
   
   let branch = github.context.ref.split("/").splice(-1)[0];
   let workflow = github.context.workflow.split("/").splice(-1)[0].replace(".yml", "");
   let eventInfo = core.getInput("event");
 
-  let content;
-  switch (github.context.eventName) {
-    case "push":
-      content = `Push on *${branch}*. Job: ${jobName} \n Commit: ${JSON.parse(eventInfo).head_commit.url}`; 
-      break;
-    case "pull_request":
-      content = `Pull Request #${github.context.payload.pull_request.number}: ${github.context.payload.pull_request.html_url}`;
-      break;
-    default:
-      content = `On *${branch}* branch \n Commit: ${JSON.parse(eventInfo).head_commit.url}`;
-  };
+//   let content;
+//   switch (github.context.eventName) {
+//     case "push":
+//       content = `Push on *${branch}*. Job: ${jobName} \n Commit: ${JSON.parse(eventInfo).head_commit.url}`; 
+//       break;
+//     case "pull_request":
+//       content = `Pull Request #${github.context.payload.pull_request.number}: ${github.context.payload.pull_request.html_url}`;
+//       break;
+//     default:
+//       content = `On *${branch}* branch \n Commit: ${JSON.parse(eventInfo).head_commit.url}`;
+//   };
   
   const payload = {
     channel: `${core.getInput("channel")}`,
     attachments: [
       {
-        color: status === "success" ? "#2e993e" : status === "failure" ? "#bd0f26" : "#d29d0c",
+        color: status === "started" ? "#2e993e" : status === "ended" ? "#2e993e" : "#d29d0c",
         blocks: [
           {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `Github Action *${workflow}*: *${status === "success" ? "SUCCESS" : status === "failure" ? "FAILURE" : "CANCELLED"}*`
+              text: `Github Action *${workflow}*: *${status === "started" ?`Started deployment for ${serviceName} in ${envName} environment` : status === "ended" ? `Deployment successful for ${serviceName} in ${envName} environment` : "CANCELLED"}*`
             }
           },    
           {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `Run details: <https://github.com/alejandrogonzalez3/${github.context.repo.repo}/actions/runs/${github.context.runId} | ${github.context.runId} run details> \n${content}`
+              text: `Run details: <https://github.com/Grit-Financial/${github.context.repo.repo}/actions/runs/${github.context.runId} | ${github.context.runId} run details>` 
+//               \n${content}`
             }
           },
           {
@@ -66,7 +69,7 @@ try {
               },
               {
                 type: "mrkdwn",
-                text: `<https://github.com/alejandrogonzalez3/${github.context.repo.repo}| alejandrogonzalez3/${github.context.repo.repo}>`
+                text: `<https://github.com/Grit-Financial/${github.context.repo.repo}| Grit-Financial/${github.context.repo.repo}>`
               }
             ]
           }
