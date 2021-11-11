@@ -34,14 +34,14 @@ try {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `${status === "started" ?`*Deployment*\n*Status*: Started\n*Service Name*: ${serviceName}\n*Environment Name*: ${envName}` : status === "ended" ? `*Deployment*\n*Status*: Finsihed\n*Service Name*: ${serviceName}\n*Environment Name*: ${envName}` : "CANCELLED"}`
+              text: `${status === "started" ?`*Deployment*\n*Status:* Started\n*Service Name:* ${serviceName}\n*Environment Name:* ${envName}` : status === "ended" ? `*Deployment*\n*Status:* Finished\n*Service Name:* ${serviceName}\n*Environment Name:* ${envName}` : "CANCELLED"}`
             }
           },    
           {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: `Run details: <https://github.com/Grit-Financial/${github.context.repo.repo}/actions/runs/${github.context.runId} | ${github.context.runId} run details>` 
+              text: `*Run details*: <https://github.com/Grit-Financial/${github.context.repo.repo}/actions/runs/${github.context.runId} | ${github.context.runId} run details>` 
 //               \n${content}`
             }
           },
