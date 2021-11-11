@@ -13,7 +13,7 @@ jobs:
         run: cd .
       - name: install node packages
         run: npm install
-      - name: Action
+      - name: Sending notification to slack 
         uses: ./ 
         if: always()
         with:
@@ -33,7 +33,7 @@ jobs:
         run: cd .
       - name: install node packages
         run: npm install
-      - name: Action
+      - name: Sending notification to slack 
         uses: ./
         if: always()
         with:
