@@ -9,6 +9,11 @@ inputs:
     description: 'Bot token used to send messages'
   channel:
     description: 'Channel where the messages are sended'
+  
+  service-name:
+    description: 'Service name'
+  env-name:
+    description: 'Environment name'
 runs:
   using: 'node12'
   main: 'index.js'
