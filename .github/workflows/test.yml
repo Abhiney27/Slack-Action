@@ -2,7 +2,7 @@ on: [push, pull_request]
 
 jobs:
   test_notify:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Test the action
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
           slack-bot-token: ${{ secrets.SLACK_TOKEN }}
           channel: githubactionspublic
   test_ko:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Test the action on failure
     steps:
       - name: Checkout
