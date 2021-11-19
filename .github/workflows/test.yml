@@ -6,11 +6,11 @@ on:
       name:
         description: 'Person to greet'
         required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+        default: 'Abhiney'
+#       home:
+#         description: 'location'
+#         required: false
+#         default: 'The Octoverse'
 
 jobs:
   test_notify:
