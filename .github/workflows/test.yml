@@ -1,4 +1,16 @@
-on: [push, pull_request]
+# on: [push, pull_request]
+name: Manually triggered workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
 jobs:
   test_notify:
